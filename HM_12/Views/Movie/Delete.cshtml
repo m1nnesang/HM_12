@@ -1,0 +1,12 @@
+@model HM_12.Models.MovieModel
+
+<h2>Видалити фільм</h2>
+
+<p>Ви впевнені що хочете видалити <strong>@Model.Title</strong>?</p>
+
+<form asp-action="Delete" method="post">
+    <input asp-for="Id" type="hidden" />
+    <button type="submit">Видалити</button>
+</form>
+
+<a asp-action="Index">Скасувати</a>

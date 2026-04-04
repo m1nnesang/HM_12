@@ -1,0 +1,26 @@
+@using HM_12.Enums
+@model HM_12.Models.MovieModel
+
+<h2>Додати фільм</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label asp-for="Title">Назва</label>
+        <input asp-for="Title" />
+    </div>
+    <div>
+        <label asp-for="Year">Рік</label>
+        <input asp-for="Year" type="number" />
+    </div>
+    <div>
+        <label asp-for="Genre">Жанр</label>
+        <select asp-for="Genre" asp-items="Html.GetEnumSelectList<Genre>()"></select>
+    </div>
+    <div>
+        <label asp-for="Description">Опис</label>
+        <textarea asp-for="Description"></textarea>
+    </div>
+    <button type="submit">Додати</button>
+</form>
+
+<a asp-action="Index">Назад до списку</a>

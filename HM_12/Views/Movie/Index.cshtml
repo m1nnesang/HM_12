@@ -1,0 +1,42 @@
+@using HM_12.Models
+@using HM_12.Enums
+@model IEnumerable<MovieModel>
+
+<h2>Список фільмів</h2>
+
+<a asp-action="Create">Додати фільм</a>
+
+<form method="get" asp-action="Index">
+    <select name="genre">
+        <option value="">Всі жанри</option>
+        @foreach (var genre in Html.GetEnumSelectList<Genre>())
+        {
+            <option value="@genre.Value">@genre.Text</option>
+        }
+    </select>
+    <input type="number" name="year" placeholder="Рік" />
+    <button type="submit">Фільтрувати</button>
+</form>
+
+<table>
+    <tr>
+        <th>Назва</th>
+        <th>Жанр</th>
+        <th>Рік</th>
+        <th>Опис</th>
+        <th>Дії</th>
+    </tr>
+    @foreach (var movie in Model)
+    {
+        <tr>
+            <td>@movie.Title</td>
+            <td>@Html.DisplayFor(m => movie.Genre)</td>
+            <td>@movie.Year</td>
+            <td>@movie.Description</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@movie.Id">Редагувати</a>
+                <a asp-action="Delete" asp-route-id="@movie.Id">Видалити</a>
+            </td>
+        </tr>
+    }
+</table>
