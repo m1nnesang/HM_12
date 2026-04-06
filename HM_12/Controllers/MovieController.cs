@@ -35,6 +35,8 @@ public class MovieController : Controller
     [HttpPost]
     public async Task<IActionResult> Create(MovieModel movie)
     {
+        if (!ModelState.IsValid) return View(movie);
+        
         await _movieService.AddMovieAsync(movie);
 
         return RedirectToAction(nameof(Index));

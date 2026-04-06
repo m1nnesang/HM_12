@@ -35,28 +35,11 @@ public class MovieService : IMovieService
         
         var movieModel = _movieModel.TryGetValue(movie.Id, out var movieToUpdate) ? movieToUpdate : null;
 
-        if (movieModel == null)
-        {
-            return null;
-        }
-
-        if (!string.IsNullOrEmpty(movie.Title))
+        if (movieModel != null)
         {
             movieModel.Title = movie.Title;
-        }
-        
-        if (movie.Year != 0)
-        {
             movieModel.Year = movie.Year;
-        }
-
-        if (movieModel.Description != movie.Description)
-        {
             movieModel.Description = movie.Description;
-        }
-
-        if (movie.Genre != movieModel.Genre)
-        {
             movieModel.Genre = movie.Genre;
         }
         
