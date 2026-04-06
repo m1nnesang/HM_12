@@ -7,14 +7,11 @@ public record MovieModel
 {
     public int Id { get; set; }
     
-    [Required]
     public int Year { get; set; }
     
-    [Required]
     public string Title { get; set; } = String.Empty;
     
     public string? Description { get; set; }
     
-    [Required]
     public Genre Genre { get; set; }
 }
